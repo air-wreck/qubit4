@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QuBIT IV Live Stats</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+  <h1>QuBIT IV Live Stats</title>
+  <div id="stats-container"></div>
+
+  <script type="text/javascript">
+  /* I love Stack Overflow... */
+  function httpGetAsync(theUrl, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+  }
+  function CSVToArray(strData, strDelimiter) {
+    strDelimiter = (strDelimiter || ",");
+    var objPattern = new RegExp(
+        (
+            // Delimiters.
+            "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+            // Quoted fields.
+            "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+            // Standard fields.
+            "([^\"\\" + strDelimiter + "\\r\\n]*))"
+        ),
+        "gi"
+        );
+    var arrData = [[]];
+    var arrMatches = null;
+    while (arrMatches = objPattern.exec( strData )){
+        var strMatchedDelimiter = arrMatches[ 1 ];
+        if (
+            strMatchedDelimiter.length &&
+            (strMatchedDelimiter != strDelimiter)
+            ){
+            arrData.push( [] );
+        }
+        if (arrMatches[ 2 ]){
+            var strMatchedValue = arrMatches[ 2 ].replace(
+                new RegExp( "\"\"", "g" ),
+                "\""
+                );
+        } else {
+            var strMatchedValue = arrMatches[ 3 ];
+        }
+        arrData[ arrData.length - 1 ].push( strMatchedValue );
+    }
+    return( arrData );
+  }
+
+  /* stupid cross-origin policy */
+  httpGetAsync('https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vSurbPCGM8W6DcFbittVrlyuSgf4QETIiT_0dMnMjd9IK4nnOnFbH5WbtPSUBehiZU6NgbhogW7A-XU/pub?gid=464705878&single=true&output=csv', function(response) {
+    data = CSVToArray(response);
+    html_str = '<table>';
+    for (var i = 0; i < data.length; i++) {
+      html_str += '<tr>';
+      for (var j = 0; j < data[0].length; j++) {
+        html_str += '<td>'+data[i][j]+'</td>';
+      }
+      html_str += '</tr>';
+    }
+    html_str += '</table>'
+    document.getElementById('stats-container').innerHTML = html_str;
+  });
+  </script>
+</body>
+</html>
