@@ -3,10 +3,21 @@
 <head>
   <title>QuBIT IV Live Stats</title>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
-  <h1>QuBIT IV Live Stats</title>
+  <a name="top"></a>
+  <div id="header">
+    <h1 class="deep-teal">QuBIT IV Live Stats</h1>
+    <p>These statistics reflect the most currently available state of the QuBIT IV tournament taking place at High Technology High School. You can learn more about quizbowl statistics at the <a href="#bottom">bottom</a> of this page.</p>
+  </div>
   <div id="stats-container"></div>
+  <a name="bottom"></a>
+  <div id="about-stats">
+    <div id="about-stats-title" class="deep-teal">About quizbowl statistics</div>
+    <p>The teams are split into different divisions and play games against each team in their division. Within divisions, teams are ranking first on win-loss record and then on PPG. Some stats that we keep track of include: W/L/T (wins/losses/ties), Pct (win percentage), PPG/PPAG (points per game/points against per game), Mrg (average score margin), 15/10/-5 (powers, regular tossups, negs), P/TU (points per tossup), P/N (powers per neg), G/N (gets per neg), BHrd (bonuses heard), BPts (bonus points), P/B (points per bonus).</p>
+    <a href="#top">Back to top</a>
+  </div>
 
   <script type="text/javascript">
   /* I love Stack Overflow... */
@@ -58,9 +69,15 @@
   /* stupid cross-origin policy */
   httpGetAsync('https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vSurbPCGM8W6DcFbittVrlyuSgf4QETIiT_0dMnMjd9IK4nnOnFbH5WbtPSUBehiZU6NgbhogW7A-XU/pub?gid=464705878&single=true&output=csv', function(response) {
     data = CSVToArray(response);
-    html_str = '<table>';
+    html_str = '<table border="0">';
     for (var i = 0; i < data.length; i++) {
-      html_str += '<tr>';
+      var style='""';
+      // make division names deep teal
+      if (data[i][0] != '' && data[i][1] == '') style = 'deep-teal';
+      // make division headers light teal
+      else if (i > 0 && data[i-1][0] != '' && data[i-1][1] == '') style = 'underline';
+      else if (i % 2 == 0 && i > 0 && data[i][0] != '') style = 'light-grey';
+      html_str += '<tr class='+style+'>';
       for (var j = 0; j < data[0].length; j++) {
         html_str += '<td>'+data[i][j]+'</td>';
       }
