@@ -1,6 +1,9 @@
 # qubit4
 live stats for QuBIT IV quizbowl tournament @ High Tech
 
+## stats
+If you were looking for the live stats and stumbled across this page accidentally, you can find them [here](stats.html).
+
 ### about QuBIT
 QuBIT is an annual quizbowl tournament run by the High Technology High School Academic Team (Lincroft, NJ). This year, we are using TJ/Charter's FACTS set. You can find more information from our forum post.
 
