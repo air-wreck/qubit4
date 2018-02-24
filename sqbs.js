@@ -10,7 +10,7 @@ var title = document.getElementsByTagName('h1')[0];
 //title.innerHTML = 'QuBIT IV ' + title.innerHTML;
 var hrefs = document.createElement('div');
 hrefs.style.cssText = 'text-align: center;';
-hrefs.innerHTML = '<a style="text-decoration: underline;" href="stats.html">Teams</a>&nbsp;&nbsp<a style="text-decoration: underline;" href="individuals.html">Individuals</a>';
+hrefs.innerHTML = '<a style="text-decoration: underline;" href="prelims-stats.html">Prelims Teams</a>&nbsp;&nbsp<a style="text-decoration: underline;" href="prelims-individuals.html">Prelims Individuals</a>&nbsp;|&nbsp;<a style="text-decoration: underline;" href="stats.html">Playoffs Teams</a>&nbsp;&nbsp;<a style="text-decoration: underline;" href="individuals.html">Playoffs Individuals</a>';
 title.parentNode.insertBefore(hrefs, title.nextSibling);
 
 /* add note on bottom */
