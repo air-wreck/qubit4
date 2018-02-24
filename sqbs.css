@@ -1,0 +1,66 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans";
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src:local('fonts/OpenSans-Regular.ttf');
+}
+
+table {
+  display: none;
+}
+
+h1 {
+  background-color: #009688;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-weight: normal;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+p table {
+  display: inline;
+  border: 0;
+  width: 600px;
+  border-collapse: collapse;
+}
+
+p table tr:first-child {
+  background-color: #009688;
+  color: white;
+  border-bottom: 1px solid black;
+}
+
+p table tr:last-child {
+  border-bottom: 1px solid black;
+}
+
+p table b {
+  font-weight: normal;
+}
+
+p table td {
+  font-size: 10pt;
+  padding: 5px;
+  border: none;
+}
+
+p table tbody {
+  width: 100%;
+}
