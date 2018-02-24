@@ -6,7 +6,7 @@ html, body {
 
 @font-face {
   font-family: "Open Sans";
-  src:local('fonts/OpenSans-Regular.ttf');
+  src: url('fonts/OpenSans-Regular.ttf');
 }
 
 table {
