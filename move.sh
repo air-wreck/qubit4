@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # just to automate this and make my life easier
-mv combined_standings.html stats.html
-mv combined_individuals.html individuals.html
+cp sqbs/uploads-combined/combined_standings.html stats.html
+cp sqbs/uploads-combined/combined_individuals.html individuals.html
+cp sqbs/uploads-playoffs/playoffs_standings.html playoffs-stats.html
+cp sqbs/uploads-playoffs/playoffs_individuals.html playoffs-individuals.html
+cp sqbs/uploads-prelims/prelims_standings.html prelims-stats.html
+cp sqbs/uploads-prelims/prelims_individuals.html prelims-individuals.html
 
 echo 'now add the lines in README.md to the HTML files'
