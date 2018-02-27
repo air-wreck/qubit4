@@ -8,4 +8,5 @@ cp sqbs/uploads-playoffs/playoffs_individuals.html playoffs-individuals.html
 cp sqbs/uploads-prelims/prelims_standings.html prelims-stats.html
 cp sqbs/uploads-prelims/prelims_individuals.html prelims-individuals.html
 
-echo 'now add the lines in README.md to the HTML files'
+# use copy.py to copy over the right lines
+./copy.py

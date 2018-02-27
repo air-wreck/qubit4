@@ -20,4 +20,4 @@ and
 <script src="sqbs.js" type="text/javascript"></script>
 ```
 
-Note that the Javascript must come *after* all the HTML, or it will not work.
+Note that the Javascript must come *after* all the HTML, or it will not work. These lines can automatically be appended by the `copy.py` file. Actually, the entire process can be automated with the `move.sh` script, assuming you put your sqbs reports in a logical place in the sqbs directory. 
